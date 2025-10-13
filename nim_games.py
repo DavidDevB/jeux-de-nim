@@ -19,17 +19,23 @@ def get_first_player(play1, play2):
 
 def play():
 
+    print("Welcome to Nim's game!")
+    print("...Loading")
+    for _ in range(5):
+        print("...")
+
     first_player = get_first_player(player1, player2)
     second_player = players[1] if first_player == players[0] else players[0]
-
-    print(f"{first_player} plays first!")
 
     matches1 = {first_player: 21}
     matches2 = {second_player: 21}
 
+    print(f"{first_player} plays first!")
+
+    print("Start!")
+
     while matches1[first_player] | matches2[second_player] > 0:
         first_player_play = input(f"{first_player}, how many matches do you pick? ")
-        print(first_player_play)
         while int(first_player_play) > 4 or int(first_player_play) < 1:
             print("You must pick between 1 and 4 matches!")
             first_player_play = input(f"{first_player}, how many matches do you pick? ")
