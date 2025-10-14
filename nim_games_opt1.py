@@ -4,7 +4,12 @@
 
 """Récupère et retourne le nom d'utilisateur"""
 def get_user_name():
-    return input("Enter you username: ")
+    while True:
+        username = input("Enter you username: ")
+        if username.strip().lower() == "comp":
+            print("'Comp' is reserved for the computer. Please choose another name.")
+            continue
+        return username
 
 
 """Définie le joueur qui commence"""
@@ -23,18 +28,19 @@ def play():
     player = get_user_name()
     comp = "Computer"
 
-    starter = get_first_player(player)
+    starter = get_first_player(player).lower()
 
     first_player = ""
 
     match starter:
-        case "Comp":
+        case "comp":
             first_player = comp
-        case "Player":
+        case _ if starter == player:
             first_player = player
 
     matches = 21
 
+    print(first_player)
     print(f"{first_player} plays first!")
 
     print("Start!")
@@ -45,25 +51,28 @@ def play():
             matches -= 4
             print("Computer picked 4 matches!")
             print(f"Matches left: {matches}")
-        player_play = input(f"{player}, how many matches do you pick? ")
-        while int(player_play) > 4 or int(player_play) < 1:
-            print("You must pick between 1 and 4 matches!")
+        while True:
             player_play = input(f"{player}, how many matches do you pick? ")
-        while int(player_play) > matches:
-            print("Not enough matches left!")
-            player_play = input(f"{player}, how many matches do you pick? ")
-        matches  -= int(player_play)
-        print(f"Matches left: {matches}")
-        if matches <= 0:
-            print(f"{comp} wins!")
+            if int(player_play) > 4 or int(player_play) < 1:
+                print("You must pick between 1 and 4 matches!")
+                player_play = input(f"{player}, how many matches do you pick? ")
+            if int(player_play) > matches:
+                print("Not enough matches left!")
+                player_play = input(f"{player}, how many matches do you pick? ")
+            matches  -= int(player_play)
+            print(f"Matches left: {matches}")
+            if matches <= 0:
+                print(f"{comp} wins!")
+                print("Game over!")
+                break
+            print(f"Computer picked {5 - int(player_play)} matches!")
+            matches -= (5 - int(player_play))
+            print(f"Matches left: {matches}")
+            if matches <= 0:
+                print(f"{player} wins!")
+                print("Game over!")
+                break
             break
-        print(f"Computer picked {5 - int(player_play)} matches!")
-        matches -= (5 - int(player_play))
-        print(f"Matches left: {matches}")
-        if matches <= 0:
-            print(f"{player} wins!")
-            break
-    return None
 
 
 if __name__ == "__main__":
