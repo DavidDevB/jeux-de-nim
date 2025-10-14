@@ -39,32 +39,36 @@ def play():
 
     # Boucle while permettant de prendre des allumettes tant que le compte d'allumettes est supérieur à zéro.
     while matches > 0:
-        first_player_play = input(f"{first_player}, how many matches do you pick? ")
-        while int(first_player_play) > 4 or int(first_player_play) < 1:
-            print("You must pick between 1 and 4 matches!")
+        while True:
             first_player_play = input(f"{first_player}, how many matches do you pick? ")
-        while int(first_player_play) > matches:
-            print("Not enough matches left!")
-            first_player_play = input(f"{second_player}, how many matches do you pick? ")
-        matches -= int(first_player_play)
-        print(f"Matches left: {matches}")
-        if matches <= 0:
-            print(f"{second_player} wins!")
+            if int(first_player_play) > 4 or int(first_player_play) < 1:
+                print("You must pick between 1 and 4 matches!")
+                first_player_play = input(f"{first_player}, how many matches do you pick? ")
+            if int(first_player_play) > matches:
+                print("Not enough matches left!")
+                first_player_play = input(f"{second_player}, how many matches do you pick? ")
+            matches -= int(first_player_play)
+            print(f"Matches left: {matches}")
+            if matches <= 0:
+                print(f"{second_player} wins!")
+                break
             break
-        second_player_play = input(f"{second_player}, how many matches do you pick? ")
-        while int(second_player_play) > 4 or int(second_player_play) < 1:
-            print("You must pick between 1 and 4 matches!")
-            second_player_play = input(f"{second_player}, how many matches do you pick? ")
-        while int(second_player_play) > matches:
-            print("Not enough matches left!")
-            second_player_play = input(f"{second_player}, how many matches do you pick? ")
-        matches-= int(second_player_play)
-        print(f"Matches left: {matches}")
-        if matches <= 0:
-            print(f"{first_player} wins!")
-            break
-    return None
 
+        while True:
+            second_player_play = input(f"{second_player}, how many matches do you pick? ")
+            if int(second_player_play) > 4 or int(second_player_play) < 1:
+                print("You must pick between 1 and 4 matches!")
+                second_player_play = input(f"{second_player}, how many matches do you pick? ")
+            if int(second_player_play) > matches:
+                print("Not enough matches left!")
+                second_player_play = input(f"{second_player}, how many matches do you pick? ")
+            matches-= int(second_player_play)
+            print(f"Matches left: {matches}")
+            if matches <= 0:
+                print(f"{first_player} wins!")
+                break
+            break
+    print("Game over!")
 
 if __name__ == "__main__":
     play()
