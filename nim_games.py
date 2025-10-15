@@ -61,7 +61,7 @@ def play():
         """
         while True:
             first_player_play = input(f"{first_player}, how many matches do you pick? ")
-            if int(first_player_play) < 1 or int(first_player_play) > 4:
+            if not first_player_play.isdigit() or int(first_player_play) < 1 or int(first_player_play) > 4:
                 print("You must pick between 1 and 4 matches!")
                 continue
             if int(first_player_play) > matches:
@@ -79,7 +79,8 @@ def play():
         """
         while True:
             second_player_play = input(f"{second_player}, how many matches do you pick? ")
-            if int(second_player_play) < 1 or int(second_player_play) > 4:
+
+            if not second_player_play.isdigit() or int(second_player_play) < 1 or int(second_player_play) > 4:
                 print("You must pick between 1 and 4 matches!")
                 continue
             if int(second_player_play) > matches:
