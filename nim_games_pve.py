@@ -65,7 +65,7 @@ def play():
             print(f"Matches left: {matches}")
         while True:
             player_play = input(f"{player}, how many matches do you pick? ")
-            if int(player_play) > 4 or int(player_play) < 1:
+            if not player_play.isdigit() or int(player_play) > 4 or int(player_play) < 1:
                 print("You must pick between 1 and 4 matches!")
                 continue
             if int(player_play) > matches:
