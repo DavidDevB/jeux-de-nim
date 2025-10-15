@@ -33,7 +33,7 @@ def get_first_player():
 def player_turn(matches):
     while True:
         row = input(f"{player}, in which row do you pick matches? 1/2/3/4?: ")
-        if not row.isdigit() or 1 > int(row) > 4:
+        if not row.isdigit() or int(row) < 1 or int(row) > 4:
             print("Choose between row 1 and 4!")
             continue
         max_pick = matches[row]
@@ -56,6 +56,8 @@ def player_turn(matches):
 
     if sum(matches.values()) <= 0:
         print(f"Computer wins!")
+        return False
+    return True
 
 
 def computer_turn(matches):
@@ -73,6 +75,9 @@ def computer_turn(matches):
 
     if sum(matches.values()) <= 0:
         print(f"{player} wins!")
+        return False
+    return True
+
 
 """
 Fonction principale de fonctionnement du jeu
