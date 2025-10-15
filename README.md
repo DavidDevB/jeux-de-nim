@@ -48,3 +48,5 @@
 - Choix du nombre d'allumettes à prendre.
 - Affichage du nombre d'allumettes restantes dans chaque pile.
 - Affichage du gagnant.
+
+#### 👨‍💻 Codé en Python 3
