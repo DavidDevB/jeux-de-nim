@@ -62,7 +62,7 @@ def play():
         """
         while True:
             row = input(f"{first_player}, in which row do you pick matches? 1/2/3/4?: ")
-            if not row.isdigit() or 1 > int(row) > 4:
+            if not row.isdigit() or int(row) < 1 or int(row) > 4:
                 print("Choose between row 1 and 4!")
                 continue
             max_pick = matches[row]
@@ -92,7 +92,7 @@ def play():
         """
         while True:
             row = input(f"{second_player}, in which row do you pick matches? 1/2/3/4?: ")
-            if not row.isdigit() or 1 > int(row) > 4:
+            if not row.isdigit() or int(row) < 1 or int(row) > 4:
                 print("Choose between row 1 and 4!")
                 continue
             max_pick = matches[row]
