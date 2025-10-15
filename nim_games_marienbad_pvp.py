@@ -50,6 +50,7 @@ def play():
     print(f"{first_player} plays first!")
 
     print("Start!")
+    print(matches)
 
     """
     Boucle while permettant de prendre des allumettes tant que le compte d'allumettes est supérieur à zéro.
@@ -79,6 +80,7 @@ def play():
                 continue
 
             matches[row] -= pick
+            print(f"Matches left: {matches}")
             break
 
         if sum(matches.values()) <= 0:
@@ -108,6 +110,7 @@ def play():
                 continue
 
             matches[row] -= pick
+            print(f"Matches left: {matches}")
             break
 
         if sum(matches.values()) <= 0:
