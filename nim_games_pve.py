@@ -67,10 +67,10 @@ def play():
             player_play = input(f"{player}, how many matches do you pick? ")
             if int(player_play) > 4 or int(player_play) < 1:
                 print("You must pick between 1 and 4 matches!")
-                player_play = input(f"{player}, how many matches do you pick? ")
+                continue
             if int(player_play) > matches:
                 print("Not enough matches left!")
-                player_play = input(f"{player}, how many matches do you pick? ")
+                continue
             matches -= int(player_play)
             print(f"Matches left: {matches}")
             if matches <= 0:
